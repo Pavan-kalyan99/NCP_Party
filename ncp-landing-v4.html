@@ -1,0 +1,750 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nationalist Congress Party — Landing Page v3 (Concept)</title>
+<meta name="description" content="Campaign-style landing page concept in saffron, white and green. Replace placeholder content with official material.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --saffron:#F28C28;--saffron-d:#d96a00;--saffron-soft:#FFF1E0;
+  --green:#138808;--green-soft:#E8F5E6;
+  --ink:#16202B;--muted:#5C6676;--line:#ECE8E1;--bg:#FFFEFB;--card:#fff;
+  --r:30px;--shadow:0 12px 34px -16px rgba(22,32,43,.22);--shadow-lg:0 40px 80px -34px rgba(22,32,43,.4);
+  --ease:cubic-bezier(.2,.8,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-snap-type:y proximity}
+body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4,.disp{font-family:"Bricolage Grotesque",Inter,sans-serif;line-height:1.02;letter-spacing:-.03em}
+a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.grad{background:linear-gradient(90deg,var(--saffron),var(--saffron-d) 45%,var(--green));-webkit-background-clip:text;background-clip:text;color:transparent}
+#progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:300;background:linear-gradient(90deg,var(--saffron) 0 33%,#fff 33% 66%,var(--green) 66%)}
+
+/* NAV (floating pill) */
+header{position:fixed;top:14px;left:0;right:0;z-index:200;pointer-events:none}
+.nav{pointer-events:auto;max-width:1240px;margin:0 16px;margin-inline:auto;width:calc(100% - 32px);display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 12px 10px 18px;border-radius:999px;background:rgba(255,254,251,.78);backdrop-filter:blur(18px);border:1px solid rgba(236,232,225,.9);box-shadow:var(--shadow);transition:.5s var(--ease)}
+header.s .nav{background:rgba(255,254,251,.94)}
+.brand{display:flex;align-items:center;gap:10px;font:700 15px "Bricolage Grotesque";letter-spacing:-.01em}
+.logo{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--saffron) 0 33%,#fff 0 66%,var(--green) 0);padding:3px;flex:none;box-shadow:0 4px 10px -4px rgba(0,0,0,.3)}
+.logo span{width:100%;height:100%;border-radius:50%;background:#fff;display:grid;place-items:center;font:800 9px Inter}
+nav ul{display:flex;gap:6px;list-style:none}
+nav a{display:block;font-size:14px;font-weight:500;color:var(--muted);padding:9px 15px;border-radius:999px;transition:.3s}
+nav a:hover{color:var(--ink);background:var(--saffron-soft)} nav a.active{color:#fff;background:var(--ink)}
+.burger{display:none;background:var(--saffron-soft);border:0;width:42px;height:42px;border-radius:50%;font-size:20px;cursor:pointer}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:8px 8px 8px 24px;border-radius:999px;font-weight:600;font-size:15px;border:0;cursor:pointer;font-family:inherit;transition:transform .35s var(--ease),box-shadow .35s;white-space:nowrap}
+.btn i{font-style:normal;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;transition:transform .4s var(--ease);background:#fff;color:var(--saffron-d)}
+.btn:hover i{transform:rotate(-45deg)}
+.btn-primary{background:linear-gradient(135deg,var(--saffron),#e9731a);color:#fff;box-shadow:0 14px 26px -12px rgba(242,140,40,.8)}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark i{color:var(--ink)}
+.btn-ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}.btn-ghost i{background:var(--green);color:#fff}
+.btn:hover{box-shadow:0 20px 34px -14px rgba(19,136,8,.4)}
+
+section.slide{min-height:100vh;display:flex;align-items:center;position:relative;scroll-snap-align:start;padding:120px 0 80px;overflow:hidden}
+.chip{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);padding:7px 16px 7px 8px;border-radius:999px;margin-bottom:22px;box-shadow:var(--shadow)}
+.chip b{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:13px;background:var(--saffron-soft)}
+.chip.g b{background:var(--green-soft)}
+h2{font-size:clamp(34px,4.8vw,64px);max-width:980px}
+.lead{color:var(--muted);font-size:18px;max-width:600px;margin-top:18px}
+.center{text-align:center}.center h2,.center .lead{margin-inline:auto}
+
+/* MEDIA slots */
+.media{position:relative;overflow:hidden;border-radius:var(--r);background:var(--saffron-soft);isolation:isolate}
+.media .art,.media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.3s var(--ease)}
+.media:hover .art,.media:hover img{transform:scale(1.06)}
+.media .tag{position:absolute;left:14px;bottom:14px;z-index:3;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);padding:7px 14px;border-radius:999px;font-size:12px;font-weight:600}
+
+/* HERO */
+#home{padding:92px 14px 14px;min-height:100vh;display:block;background:var(--bg)}
+.herocard{position:relative;height:calc(100vh - 106px);min-height:640px;border-radius:40px;overflow:hidden;background:var(--saffron-soft);box-shadow:var(--shadow-lg)}
+.herobg{position:absolute;inset:-4% 0 0;will-change:transform}
+.herobg .art,.herobg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.herocard::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(0deg,rgba(255,254,251,.97) 0%,rgba(255,254,251,.85) 22%,rgba(255,254,251,0) 58%),linear-gradient(100deg,rgba(255,254,251,.5),transparent 45%)}
+.hero-in{position:absolute;inset:0;z-index:2;padding:40px 44px;display:flex;flex-direction:column;justify-content:space-between}
+.hero-top{display:flex;justify-content:space-between;gap:30px;align-items:flex-start}
+.kw{list-style:none;display:grid;gap:10px}
+.kw li{display:flex;align-items:center;gap:12px;font:600 17px "Bricolage Grotesque";letter-spacing:-.01em;background:rgba(255,255,255,.7);backdrop-filter:blur(10px);padding:8px 18px 8px 10px;border-radius:999px;width:max-content;box-shadow:var(--shadow);transition:.4s var(--ease)}
+.kw li:hover{transform:translateX(10px)}
+.kw li::before{content:"";width:12px;height:12px;border-radius:50%;background:var(--c,var(--saffron))}
+.kw li:nth-child(even){--c:var(--green)}
+.herobox{max-width:380px;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border-radius:26px;padding:24px;box-shadow:var(--shadow-lg)}
+.herobox p{color:var(--muted);font-size:15px;margin-bottom:18px}
+.herobox .row{display:flex;gap:10px;flex-wrap:wrap}
+.hero-bot{display:flex;align-items:flex-end;justify-content:space-between;gap:20px}
+h1{font-size:clamp(70px,15.5vw,230px);letter-spacing:-.06em;line-height:.82;font-weight:800}
+.pill{display:inline-block;padding:.02em .22em .08em;margin-left:.04em;border-radius:999px;background:linear-gradient(90deg,var(--saffron) 0%,#fff 50%,var(--green) 100%);background-size:200% 100%;animation:shine 6s linear infinite;box-shadow:inset 0 0 0 4px #fff,var(--shadow);transform:rotate(-2deg)}
+@keyframes shine{50%{background-position:100% 0}}
+.scrollcue{flex:none;width:92px;height:92px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:30px;animation:bob 2.4s ease-in-out infinite;margin-bottom:10px}
+@keyframes bob{50%{transform:translateY(10px)}}
+
+/* ABOUT */
+#about{background:#fff}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.statement{font:700 clamp(28px,3.4vw,46px)/1.12 "Bricolage Grotesque";letter-spacing:-.03em}
+.statement em{font-style:normal;color:var(--saffron-d)}
+.about-img{height:560px;position:relative}
+.about-img .media{height:100%}
+.badge{position:absolute;z-index:4;left:-34px;bottom:44px;background:#fff;border-radius:26px;padding:20px 28px;box-shadow:var(--shadow-lg);text-align:left}
+.badge b{font:800 56px "Bricolage Grotesque";color:var(--green);display:block;line-height:1}
+.badge span{font-size:13px;color:var(--muted)}
+.rot{position:absolute;z-index:4;top:-26px;right:-18px;width:110px;height:110px;border-radius:50%;background:var(--saffron);display:grid;place-items:center;animation:spin 18s linear infinite}
+.rot::after{content:"✦";color:#fff;font-size:34px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PRIORITIES */
+#pillars{background:linear-gradient(180deg,#fff,var(--saffron-soft) 160%)}
+.pgrid{display:grid;grid-template-columns:5fr 7fr;gap:22px;margin-top:50px}
+.pgrid .big{min-height:100%;position:relative}
+.pgrid .big .media{height:100%;min-height:480px}
+.pgrid .big .btn{position:absolute;z-index:4;left:20px;bottom:20px}
+.pcards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pc{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:26px;display:flex;flex-direction:column;gap:14px;transition:transform .3s ease-out,box-shadow .4s,background .5s;transform-style:preserve-3d;position:relative;overflow:hidden}
+.pc:hover{box-shadow:var(--shadow-lg);background:var(--saffron-soft)}
+.pc:nth-child(2):hover,.pc:nth-child(3):hover{background:var(--green-soft)}
+.pc .top{display:flex;justify-content:space-between;align-items:center}
+.pc small{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.pc .ic{width:52px;height:52px;border-radius:50%;background:var(--saffron-soft);display:grid;place-items:center;font-size:22px;transition:transform .5s var(--ease)}
+.pc:hover .ic{transform:rotate(-12deg) scale(1.15);background:#fff}
+.pc h3{font-size:28px;margin-top:auto;padding-top:34px}.pc p{color:var(--muted);font-size:15px}
+
+/* WHY */
+#why{background:#fff}
+.why{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.nums{list-style:none;margin-top:36px}
+.nums li{display:flex;gap:22px;align-items:baseline;padding:22px 0;border-top:1px solid var(--line);transition:.4s var(--ease);cursor:default}
+.nums li:last-child{border-bottom:1px solid var(--line)}
+.nums li:hover{padding-left:18px;color:var(--saffron-d)}
+.nums span{font-size:14px;color:var(--muted);font-weight:600;min-width:34px}
+.nums h3{font-size:clamp(26px,3vw,40px)}
+.stack{position:relative;height:620px}
+.stack .media{position:absolute;box-shadow:var(--shadow-lg);border:6px solid #fff}
+.s1{width:62%;height:58%;top:0;right:0}.s2{width:58%;height:52%;bottom:0;left:0}
+.band{position:absolute;left:0;right:0;bottom:0;background:var(--ink);color:#fff;padding:16px 0;overflow:hidden;white-space:nowrap;transform:rotate(-1.2deg) scale(1.03)}
+.band div{display:inline-flex;gap:40px;animation:slide 26s linear infinite;font:700 clamp(22px,3vw,34px) "Bricolage Grotesque";letter-spacing:-.02em}
+.band span:nth-child(3n+1){color:var(--saffron)}.band span:nth-child(3n){color:#7bd66f}
+.band span::after{content:"✦";margin-left:40px;color:#fff;opacity:.4}
+@keyframes slide{to{transform:translateX(-50%)}}
+#why{padding-bottom:140px}
+
+/* EVENTS */
+#events{background:linear-gradient(180deg,#fff,var(--green-soft) 170%)}
+.ev-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;margin-top:46px;align-items:start}
+.evs{display:grid;gap:14px}
+.ev{display:grid;grid-template-columns:86px 1fr auto;gap:22px;align-items:center;background:#fff;border:1px solid var(--line);border-radius:26px;padding:16px 22px 16px 16px;transition:.45s var(--ease);cursor:pointer}
+.ev:hover,.ev.on{transform:translateX(10px);box-shadow:var(--shadow);border-color:transparent;background:var(--saffron-soft)}
+.ev .d{border-radius:20px;background:var(--ink);color:#fff;text-align:center;padding:12px 0;line-height:1}
+.ev .d b{display:block;font:800 30px "Bricolage Grotesque"}.ev .d span{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--saffron)}
+.ev h3{font-size:22px;letter-spacing:-.02em}.ev small{color:var(--muted);font-size:14px}
+.ev .go{width:46px;height:46px;border-radius:50%;background:#fff;display:grid;place-items:center;transition:.4s var(--ease)}
+.ev:hover .go{background:var(--saffron);color:#fff;transform:rotate(-45deg)}
+.evprev{position:sticky;top:110px;height:520px}.evprev .media{height:100%}
+
+/* SUPPORT */
+#support{background:#fff;padding:100px 0}
+.sup{position:relative;border-radius:44px;overflow:hidden;padding:70px 56px;color:#fff;background:linear-gradient(120deg,#f8a24a,var(--saffron) 38%,#2f9a24 100%);display:grid;grid-template-columns:1.3fr .7fr;gap:40px;align-items:center;box-shadow:var(--shadow-lg)}
+.sup::before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;background:rgba(255,255,255,.14);right:-120px;top:-180px;animation:float 9s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(24px) scale(1.05)}}
+.sup .chip{color:var(--ink)} .sup h2{font-size:clamp(30px,4vw,54px)}
+.sup p{opacity:.9;margin:16px 0 28px;max-width:540px}
+.sup .btn{background:#fff;color:var(--ink)}.sup .btn i{background:var(--ink);color:#fff}
+.sup .media{height:300px;border:6px solid rgba(255,255,255,.9);transform:rotate(3deg)}
+
+/* VOICES */
+#voices{background:linear-gradient(180deg,#fff,var(--saffron-soft) 180%)}
+.vtrack{margin-top:50px;display:flex;gap:20px;width:max-content;animation:slide 50s linear infinite}
+.vwrap{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.vwrap:hover .vtrack{animation-play-state:paused}
+.vc{width:380px;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:20px;transition:.4s var(--ease)}
+.vc:hover{transform:translateY(-8px)}
+.vc .q{font:800 60px/0.6 "Bricolage Grotesque";color:var(--saffron)}
+.vc p{font-size:16px}
+.who{display:flex;gap:12px;align-items:center;margin-top:auto}
+.av{width:48px;height:48px;border-radius:50%;display:grid;place-items:center;font:700 16px "Bricolage Grotesque";color:#fff;background:linear-gradient(135deg,var(--saffron),var(--green))}
+.who b{display:block;font-size:15px}.who span{font-size:13px;color:var(--muted)}
+.samp{text-align:center;font-size:12px;color:var(--muted);margin-top:22px}
+
+/* VOLUNTEER */
+#volunteer{background:#fff}
+.vol{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center}
+.steps{list-style:none;margin:34px 0}
+.steps li{display:flex;gap:18px;align-items:center;padding:16px 18px;border-radius:22px;border:1px solid var(--line);margin-bottom:12px;background:var(--bg);transition:.4s var(--ease)}
+.steps li:hover{transform:translateX(10px);background:var(--green-soft);border-color:transparent}
+.steps b{width:44px;height:44px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:14px;flex:none}
+.steps h4{font-size:21px;letter-spacing:-.02em}
+.vmedia{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.vmedia .media{height:420px}.vmedia .media:nth-child(2){margin-top:60px}
+
+/* INSIGHTS */
+#insights{background:linear-gradient(180deg,#fff,var(--green-soft) 170%)}
+.posts{margin-top:44px;border-top:1px solid var(--ink)}
+.post{display:grid;grid-template-columns:200px 1fr auto;gap:30px;align-items:center;padding:28px 6px;border-bottom:1px solid var(--line);transition:.45s var(--ease);position:relative}
+.post:hover{padding-left:22px;background:linear-gradient(90deg,var(--saffron-soft),transparent)}
+.post small{color:var(--muted);font-size:14px}
+.post h3{font-size:clamp(22px,2.6vw,34px)}
+.post .go{width:52px;height:52px;border-radius:50%;border:1.5px solid var(--ink);display:grid;place-items:center;transition:.4s var(--ease)}
+.post:hover .go{background:var(--ink);color:#fff;transform:rotate(-45deg)}
+
+/* FOOTER */
+footer{background:var(--ink);color:#c9d0db;position:relative;overflow:hidden;padding:90px 0 30px}
+footer::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--saffron) 0 33.3%,#fff 33.3% 66.6%,var(--green) 66.6%)}
+.fbig{font:800 clamp(44px,9vw,140px)/.9 "Bricolage Grotesque";letter-spacing:-.05em;color:#fff;margin-bottom:46px}
+.fbig span{color:var(--saffron)}
+.frow{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:40px;margin-top:20px}
+.news{display:flex;background:rgba(255,255,255,.08);border-radius:999px;padding:6px;margin-top:14px;max-width:380px}
+.news input{flex:1;background:none;border:0;outline:0;color:#fff;padding:0 18px;font:inherit}
+.news button{border:0;border-radius:999px;background:var(--saffron);color:#fff;font-weight:600;padding:12px 22px;cursor:pointer;font-family:inherit}
+footer h4{color:#fff;font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px}
+footer a{display:block;margin:7px 0;font-size:15px;transition:.3s}footer a:hover{color:var(--saffron);padding-left:6px}
+.legal{border-top:1px solid rgba(255,255,255,.12);margin-top:50px;padding-top:22px;font-size:12px;color:#8b95a5}
+
+/* DOTS */
+.dots{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:150;display:grid;gap:13px}
+.dots a{width:9px;height:9px;border-radius:50%;background:#c4bfb5;position:relative;transition:.4s var(--ease);box-shadow:0 0 0 2px rgba(255,255,255,.7)}
+.dots a.active{background:var(--saffron);transform:scale(1.55)}
+.dots a::after{content:attr(data-l);position:absolute;right:20px;top:50%;transform:translateY(-50%) translateX(8px);font-size:12px;font-weight:600;background:var(--ink);color:#fff;padding:4px 10px;border-radius:8px;opacity:0;pointer-events:none;white-space:nowrap;transition:.3s}
+.dots a:hover::after{opacity:1;transform:translateY(-50%)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:400;background:rgba(14,20,16,.88);backdrop-filter:blur(10px);display:none;place-items:center;padding:24px}
+.modal.open{display:grid;animation:fade .35s}@keyframes fade{from{opacity:0}}
+.modal .box{width:min(1000px,100%);aspect-ratio:16/9;border-radius:24px;overflow:hidden;background:#000;position:relative;animation:pop2 .5s var(--ease)}
+@keyframes pop2{from{transform:scale(.92);opacity:0}}
+.modal .box iframe,.modal .box video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.modal .empty{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#fff;padding:30px;background:linear-gradient(135deg,#3b2410,#10300d)}
+.modal .x{position:absolute;top:18px;right:22px;width:44px;height:44px;border-radius:50%;border:0;background:#fff;font-size:18px;cursor:pointer}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(46px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:calc(var(--d,0)*110ms)}
+.rv.l{transform:translateX(-60px)}.rv.r{transform:translateX(60px)}.rv.z{transform:scale(.92)}
+.in .rv{opacity:1;transform:none}
+.mask{display:inline-block;overflow:hidden;vertical-align:bottom}
+.mask>span{display:inline-block;transform:translateY(110%);transition:transform 1.1s var(--ease);transition-delay:calc(var(--d,0)*90ms)}
+.in .mask>span{transform:none}
+
+@media(max-width:1000px){
+  .about-grid,.why,.vol,.ev-grid,.sup,.pgrid{grid-template-columns:1fr;gap:36px}
+  .about-img{height:380px}.badge{left:10px}.stack{height:480px}.evprev{display:none}
+  .frow{grid-template-columns:1fr 1fr}.dots{display:none}
+  .hero-top{flex-direction:column}.herobox{max-width:100%}.kw{display:none}
+  .post{grid-template-columns:1fr auto}.post small:first-child{grid-column:1/-1}
+  nav ul{position:fixed;top:78px;left:16px;right:16px;background:#fff;border-radius:26px;flex-direction:column;padding:16px;box-shadow:var(--shadow-lg);transform:translateY(-140%);transition:.5s var(--ease);pointer-events:auto}
+  nav ul.open{transform:none}.burger{display:block}.nav>.btn{display:none}
+  section.slide{min-height:auto;padding:100px 0 60px}#home{padding-top:86px}
+  .herocard{min-height:600px}.sup{padding:44px 26px}
+}
+@media(max-width:620px){.pcards{grid-template-columns:1fr}.frow{grid-template-columns:1fr}.vmedia .media{height:260px}.vc{width:300px}.ev{grid-template-columns:70px 1fr}.ev .go{display:none}.hero-in{padding:22px}.scrollcue{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv,.mask>span{opacity:1;transform:none}html{scroll-behavior:auto}}
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Kannada:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* language switch */
+.lang{display:inline-flex;background:var(--saffron-soft);border-radius:999px;padding:4px;flex:none;border:1px solid var(--line)}
+.lang button{border:0;background:none;font:600 13px Inter,"Noto Sans Kannada",sans-serif;padding:8px 14px;border-radius:999px;cursor:pointer;color:var(--muted);transition:.35s var(--ease)}
+.lang button.on{background:var(--ink);color:#fff;box-shadow:0 6px 14px -6px rgba(0,0,0,.5)}
+body.swap{animation:swapin .55s var(--ease)}
+@keyframes swapin{from{opacity:.25;filter:blur(4px)}}
+
+/* Kannada typography: taller glyphs need looser tracking and line-height */
+html[lang="kn"] body,html[lang="kn"] :is(h1,h2,h3,h4,.disp,.statement,.fbig,.kw li,.band div,.ev .d b,.badge b,.brand,.vc .q,.av,.pc h3){font-family:"Noto Sans Kannada","Bricolage Grotesque",Inter,sans-serif}
+html[lang="kn"] :is(h1,h2,h3,h4,.statement,.fbig,.kw li,.band div,.brand,.badge b){letter-spacing:0}
+html[lang="kn"] h1{font-size:clamp(56px,11.5vw,176px);line-height:1.2;font-weight:800}
+html[lang="kn"] h1 .mask{padding:.06em 0 .14em}
+html[lang="kn"] .pill{padding:0 .3em .06em}
+html[lang="kn"] h2{line-height:1.25;font-size:clamp(30px,4.2vw,56px)}
+html[lang="kn"] .statement{line-height:1.38;font-size:clamp(25px,3vw,40px)}
+html[lang="kn"] .fbig{line-height:1.25;font-size:clamp(40px,7.4vw,112px)}
+html[lang="kn"] :is(.pc h3,.nums h3,.ev h3,.post h3,.steps h4){line-height:1.3}
+html[lang="kn"] .nums h3{font-size:clamp(24px,2.6vw,36px)}
+html[lang="kn"] .lead,html[lang="kn"] p{line-height:1.75}
+html[lang="kn"] nav a{padding:9px 11px}
+html[lang="kn"] .btn{line-height:1.5}
+html[lang="kn"] .band div{font-size:clamp(20px,2.6vw,30px)}
+@media(max-width:1120px){.brand{font-size:0;gap:0}}
+</style>
+<link rel="icon" type="image/webp" href="https://res.cloudinary.com/dfsl8rwny/image/upload/v1793469527/ncp_logo_pg8xxp.webp">
+<link rel="preload" as="image" href="https://res.cloudinary.com/dfsl8rwny/image/upload/v1793470340/p1_ncp_hero_zlffl9.webp">
+<style>
+.logo-img{height:44px;width:auto;max-width:64px;object-fit:contain;flex:none;display:block;transition:transform .5s var(--ease)}
+.brand:hover .logo-img{transform:rotate(-6deg) scale(1.06)}
+footer .logo-img{background:#fff;border-radius:14px;padding:5px;height:60px;max-width:84px}
+.herobg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 22%;opacity:0;transition:opacity .9s var(--ease)}
+.herobg img.ready{opacity:1}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<header id="hd"><div class="nav">
+  <a href="#home" class="brand"><img class="logo-img" src="https://res.cloudinary.com/dfsl8rwny/image/upload/v1793469527/ncp_logo_pg8xxp.webp" alt="NCP logo" width="44" height="44" decoding="async" onerror="this.outerHTML='<div class=&quot;logo&quot;><span>NCP</span></div>'">Nationalist Congress Party</a>
+  <nav><ul id="menu">
+    <li><a href="#home" class="active">Home</a></li><li><a href="#about">About</a></li><li><a href="#pillars">Priorities</a></li>
+    <li><a href="#events">Events</a></li><li><a href="#voices">Voices</a></li><li><a href="#insights">News</a></li>
+  </ul></nav>
+  <a href="#volunteer" class="btn btn-primary mag">Join the Movement <i>→</i></a>
+  <div class="lang" id="lang" role="group" aria-label="Language"><button data-l="en" class="on" aria-label="English">EN</button><button data-l="kn" aria-label="Kannada">ಕನ್ನಡ</button></div>
+  <button class="burger" id="burger" aria-label="Menu">☰</button>
+</div></header>
+
+<nav class="dots" id="dots" aria-label="Sections">
+  <a href="#home" data-l="Home" class="active"></a><a href="#about" data-l="About"></a><a href="#pillars" data-l="Priorities"></a><a href="#why" data-l="Why us"></a><a href="#events" data-l="Events"></a>
+  <a href="#support" data-l="Support"></a><a href="#voices" data-l="Voices"></a><a href="#volunteer" data-l="Volunteer"></a><a href="#insights" data-l="News"></a>
+</nav>
+
+<main>
+<!-- 1 HERO -->
+<section class="slide in" id="home">
+  <div class="herocard" id="herocard">
+    <div class="herobg" id="herobg" data-media="heroVideo" data-art="dawn"></div>
+    <div class="hero-in">
+      <div class="hero-top">
+        <ul class="kw">
+          <li class="rv" style="--d:1">Leadership</li><li class="rv" style="--d:2">Trust</li><li class="rv" style="--d:3">Movement</li><li class="rv" style="--d:4">Action</li>
+        </ul>
+        <div class="herobox rv l" style="--d:3">
+          <p>Join us for safer communities, better jobs, stronger education and real progress for every family.</p>
+          <div class="row">
+            <a href="#volunteer" class="btn btn-primary mag">Join the Movement <i>→</i></a>
+            <button class="btn btn-ghost mag" data-video="0">Watch <i>▶</i></button>
+          </div>
+        </div>
+      </div>
+      <div class="hero-bot">
+        <h1><span class="mask"><span>Strong</span></span><br><span class="mask" style="--d:2"><span><span class="pill">voice.</span></span></span></h1>
+        <a href="#about" class="scrollcue" aria-label="Scroll down">↓</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 ABOUT -->
+<section class="slide" id="about">
+  <div class="wrap about-grid">
+    <div>
+      <div class="chip rv"><b>🇮🇳</b> About the party</div>
+      <p class="statement rv" style="--d:1">With a strong tradition of public service and a passion for <em>people-first</em> politics, we are committed to <em>positive change</em>, economic growth and transparent governance.</p>
+      <p class="lead rv" style="--d:2">Replace this with the party's story: origin, values and the communities it serves. Two or three honest sentences are enough.</p>
+      <a href="#why" class="btn btn-dark mag rv" style="--d:3;margin-top:30px">Read our story <i>→</i></a>
+    </div>
+    <div class="about-img rv r" style="--d:2">
+      <div class="media" data-media="img1" data-art="community"><span class="tag">🤝 Community meeting</span></div>
+      <div class="rot"></div>
+      <div class="badge"><b data-count="12" data-suffix="+">0</b><span>Years of public service*</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 PRIORITIES -->
+<section class="slide" id="pillars">
+  <div class="wrap">
+    <div class="center">
+      <div class="chip g rv"><b>🎯</b> Key priorities</div>
+      <h2 class="rv" style="--d:1">Clear priorities and practical policies for a <span class="grad">stronger, safer</span> future</h2>
+    </div>
+    <div class="pgrid">
+      <div class="big rv l"><div class="media" data-media="img2" data-art="fields"></div><a href="#volunteer" class="btn btn-primary mag">Join the Campaign <i>→</i></a></div>
+      <div class="pcards">
+        <article class="pc tilt rv" style="--d:1"><div class="top"><small>Rural growth</small><div class="ic">🌾</div></div><h3>Agriculture</h3><p>Fair prices, better irrigation and support for farming families.</p></article>
+        <article class="pc tilt rv" style="--d:2"><div class="top"><small>Future skills</small><div class="ic">🎓</div></div><h3>Jobs &amp; youth</h3><p>Skill programmes and local enterprise close to home.</p></article>
+        <article class="pc tilt rv" style="--d:3"><div class="top"><small>Equal voice</small><div class="ic">👩‍👧</div></div><h3>Women &amp; family</h3><p>Safety, health and leadership pathways in every ward.</p></article>
+        <article class="pc tilt rv" style="--d:4"><div class="top"><small>Better living</small><div class="ic">🏗️</div></div><h3>Development</h3><p>Roads, water, schools and clinics, tracked in public.</p></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 WHY -->
+<section class="slide" id="why">
+  <div class="wrap why">
+    <div>
+      <div class="chip rv"><b>⭐</b> Trusted leadership</div>
+      <h2 class="rv" style="--d:1">Why people <span class="grad">stand with us</span></h2>
+      <p class="lead rv" style="--d:2">Built on integrity, experience and action: solving real problems, listening to citizens and delivering progress people can trust.</p>
+      <ul class="nums">
+        <li class="rv" style="--d:1"><span>(01)</span><h3>Proven experience</h3></li>
+        <li class="rv" style="--d:2"><span>(02)</span><h3>Honest leadership</h3></li>
+        <li class="rv" style="--d:3"><span>(03)</span><h3>Community first</h3></li>
+        <li class="rv" style="--d:4"><span>(04)</span><h3>Real results</h3></li>
+      </ul>
+    </div>
+    <div class="stack rv r" style="--d:2">
+      <div class="media s1" data-media="img3" data-art="city"><span class="tag">🏗️ Local works</span></div>
+      <div class="media s2" data-media="img4" data-art="youth"><span class="tag">🎓 Youth drive</span></div>
+    </div>
+  </div>
+  <div class="band"><div>
+    <span>Leader</span><span>Change</span><span>Trust</span><span>Progress</span><span>Together</span><span>Action</span>
+    <span>Leader</span><span>Change</span><span>Trust</span><span>Progress</span><span>Together</span><span>Action</span>
+  </div></div>
+</section>
+
+<!-- 5 EVENTS -->
+<section class="slide" id="events">
+  <div class="wrap">
+    <div class="chip g rv"><b>📅</b> Upcoming events</div>
+    <h2 class="rv" style="--d:1">Meet us, share your voice and <span class="grad">shape what's next</span></h2>
+    <div class="ev-grid">
+      <div class="evs">
+        <div class="ev on rv" style="--d:1" data-art="community" data-l="Community outreach"><div class="d"><b>08</b><span>Nov</span></div><div><h3>Community outreach programme</h3><small>Community Hall · Sample event</small></div><div class="go">→</div></div>
+        <div class="ev rv" style="--d:2" data-art="city" data-l="Town hall"><div class="d"><b>15</b><span>Nov</span></div><div><h3>Community town hall</h3><small>Town Centre · Sample event</small></div><div class="go">→</div></div>
+        <div class="ev rv" style="--d:3" data-art="fields" data-l="Farmers' meet"><div class="d"><b>22</b><span>Nov</span></div><div><h3>Farmers' meet</h3><small>District Grounds · Sample event</small></div><div class="go">→</div></div>
+        <div class="ev rv" style="--d:4" data-art="sun" data-l="Rally"><div class="d"><b>29</b><span>Nov</span></div><div><h3>Rally for change</h3><small>Main Ground · Sample event</small></div><div class="go">→</div></div>
+      </div>
+      <div class="evprev rv r" style="--d:2"><div class="media" id="evmedia" data-art="community"><span class="tag" id="evtag">Community outreach</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 6 SUPPORT -->
+<section class="slide" id="support">
+  <div class="wrap">
+    <div class="sup rv z">
+      <div style="position:relative;z-index:2">
+        <div class="chip"><b>💛</b> Support the movement</div>
+        <h2>Every contribution helps us reach more people and build a stronger future.</h2>
+        <p>Placeholder: connect this button to your official, legally compliant contribution page.</p>
+        <a href="#" class="btn mag">Contribute today <i>→</i></a>
+      </div>
+      <div class="media" data-media="img5" data-art="sun" style="position:relative;z-index:2"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 7 VOICES -->
+<section class="slide" id="voices">
+  <div class="wrap center">
+    <div class="chip rv"><b>💬</b> Supporters</div>
+    <h2 class="rv" style="--d:1">Voices from the <span class="grad">community</span></h2>
+    <p class="lead rv" style="--d:2">Hear from citizens, volunteers and local leaders.</p>
+  </div>
+  <div class="vwrap rv" style="--d:3;position:absolute;left:0;right:0;bottom:90px"><div class="vtrack" id="vtrack"></div></div>
+  <p class="samp" style="position:absolute;bottom:40px;left:0;right:0">Sample testimonials for layout only. Replace with real, consented quotes.</p>
+</section>
+
+<!-- 8 VOLUNTEER -->
+<section class="slide" id="volunteer">
+  <div class="wrap vol">
+    <div>
+      <div class="chip g rv"><b>🙌</b> Become a volunteer</div>
+      <h2 class="rv" style="--d:1">Help build a stronger future through <span class="grad">community action</span></h2>
+      <ul class="steps">
+        <li class="rv" style="--d:1"><b>01</b><h4>Make real impact</h4></li>
+        <li class="rv" style="--d:2"><b>02</b><h4>Join campaign events</h4></li>
+        <li class="rv" style="--d:3"><b>03</b><h4>Build experience</h4></li>
+      </ul>
+      <a href="#" class="btn btn-primary mag rv" style="--d:4" id="volBtn">Join as a volunteer <i>→</i></a>
+      <form class="news rv" style="--d:5;margin-top:22px;background:var(--saffron-soft)" id="volForm" onsubmit="return false"><input placeholder="Your mobile or email" style="color:var(--ink)" required><button>Notify me</button></form>
+    </div>
+    <div class="vmedia rv r" style="--d:2">
+      <div class="media" data-media="img6" data-art="youth"><span class="tag">Volunteers</span></div>
+      <div class="media" data-media="img7" data-art="community"><span class="tag">Ground team</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 9 INSIGHTS -->
+<section class="slide" id="insights">
+  <div class="wrap">
+    <div class="chip rv"><b>📰</b> Recent insights</div>
+    <h2 class="rv" style="--d:1">Latest <span class="grad">updates</span></h2>
+    <p class="lead rv" style="--d:2">Announcements, policy updates, events and community stories. Sample headlines below.</p>
+    <div class="posts">
+      <a href="#" class="post rv" style="--d:1"><small>Sample date · 4 min read</small><h3>Rally draws large crowd of supporters</h3><div class="go">→</div></a>
+      <a href="#" class="post rv" style="--d:2"><small>Sample date · 5 min read</small><h3>New policy plan focuses on jobs and growth</h3><div class="go">→</div></a>
+      <a href="#" class="post rv" style="--d:3"><small>Sample date · 3 min read</small><h3>Town halls strengthen community connection</h3><div class="go">→</div></a>
+      <a href="#" class="post rv" style="--d:4"><small>Sample date · 4 min read</small><h3>Youth join the growing movement</h3><div class="go">→</div></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img class="logo-img" src="https://res.cloudinary.com/dfsl8rwny/image/upload/v1793469527/ncp_logo_pg8xxp.webp" alt="NCP logo" width="52" height="52" loading="lazy" style="margin-bottom:26px">
+    <div class="fbig">Join the movement<br>for <span>change.</span></div>
+    <a href="#volunteer" class="btn btn-primary mag">Become a volunteer <i>→</i></a>
+    <div class="frow">
+      <div><h4>Newsletter</h4><p style="font-size:14px">Get updates in your inbox.</p><form class="news" onsubmit="return false"><input placeholder="Email address"><button>Subscribe</button></form></div>
+      <div><h4>Quick links</h4><a href="#about">About</a><a href="#pillars">Priorities</a><a href="#events">Events</a><a href="#insights">News</a></div>
+      <div><h4>Socials</h4><a href="#">Facebook</a><a href="#">X / Twitter</a><a href="#">Instagram</a><a href="#">YouTube</a></div>
+      <div><h4>Contact</h4><a href="#">office@example.org</a><a href="#">+91 00000 00000</a><a href="#">Office address here</a></div>
+    </div>
+    <div class="legal">© 2026 · Design concept · Not an official website of any political party. Add official disclaimers, funding and legal notices as required.</div>
+  </div>
+</footer>
+
+<div class="modal" id="modal"><button class="x" id="mx" aria-label="Close">✕</button><div class="box" id="mbox"></div></div>
+
+<script>
+/* =====================================================================
+   CONFIG: add files to an /assets folder beside this page, or paste full
+   https:// links. Blank = built-in illustrated artwork.
+   Videos: .mp4 path, YouTube or Vimeo link.
+   ===================================================================== */
+const CONFIG={
+  heroImage:"https://res.cloudinary.com/dfsl8rwny/image/upload/v1793470340/p1_ncp_hero_zlffl9.webp",
+  heroVideo:"",                 // e.g. "assets/hero.mp4" (short, muted, loop, <8MB)
+  img1:"",img2:"",img3:"",img4:"",img5:"",img6:"",img7:"",
+  videos:["","",""]
+};
+
+(()=>{
+  const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  /* generated artwork fallback */
+  const PAL={fields:["#FFE2B8","#F9B25C","#7CC36B","#138808"],city:["#FFEBD0","#F6A453","#9ED08F","#2c8b2a"],youth:["#FFF1E0","#F28C28","#B9E3AF","#0f7a06"],
+    community:["#FFE9CC","#F5A04A","#A9DBA0","#1a8f10"],sun:["#FFD9A8","#F28C28","#6fbd5f","#0c6a08"],dawn:["#FFF3DF","#F6A453","#BFE6B6","#2f9a24"]};
+  const ICON={fields:"🌾",city:"🏗️",youth:"🎓",community:"🤝",sun:"🇮🇳",dawn:""};
+  function art(kind,seed=0){
+    const p=PAL[kind]||PAL.fields,id="g"+Math.random().toString(36).slice(2,7),o=(seed*37)%60;
+    return `<svg class="art" viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+    <defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${p[0]}"/><stop offset="1" stop-color="#fff"/></linearGradient></defs>
+    <rect width="400" height="300" fill="url(#${id})"/>
+    <circle cx="${300-o}" cy="${86+o/3}" r="46" fill="${p[1]}" opacity=".9"/><circle cx="${300-o}" cy="${86+o/3}" r="70" fill="${p[1]}" opacity=".2"/><circle cx="${300-o}" cy="${86+o/3}" r="98" fill="${p[1]}" opacity=".1"/>
+    <path d="M0 190 Q90 ${140+o/2} 190 185 T400 170 V300 H0Z" fill="${p[1]}" opacity=".45"/>
+    <path d="M0 220 Q110 ${175-o/3} 220 215 T400 205 V300 H0Z" fill="${p[2]}"/>
+    <path d="M0 255 Q130 ${215+o/4} 260 250 T400 240 V300 H0Z" fill="${p[3]}"/>
+    <text x="200" y="165" font-size="54" text-anchor="middle" opacity=".92">${ICON[kind]||""}</text></svg>`;
+  }
+  let n=0;
+  function fillMedia(el,src){
+    el.insertAdjacentHTML("afterbegin",art(el.dataset.art||"fields",n++));
+    if(src){const im=new Image();im.alt="";im.loading="lazy";im.src=src;im.onload=()=>el.insertBefore(im,el.firstChild.nextSibling)}
+  }
+  $$('[data-media]').forEach(el=>{
+    const key=el.dataset.media;
+    if(key==="heroVideo"){
+      el.insertAdjacentHTML("afterbegin",art("dawn",2));
+      if(CONFIG.heroImage){const hi=new Image();hi.alt="";hi.decoding="async";hi.fetchPriority="high";hi.src=CONFIG.heroImage;
+        hi.onload=()=>{el.insertBefore(hi,el.firstChild.nextSibling);requestAnimationFrame(()=>hi.classList.add("ready"))}}
+      if(CONFIG.heroVideo){const v=document.createElement("video");Object.assign(v,{src:CONFIG.heroVideo,autoplay:true,muted:true,loop:true,playsInline:true});
+        v.oncanplay=()=>{el.insertBefore(v,el.firstChild.nextSibling);v.play().catch(()=>{})}}
+    } else fillMedia(el,CONFIG[key]);
+  });
+  $$('.media[data-art]:not([data-media])').forEach(el=>fillMedia(el));
+
+  /* testimonials (SAMPLE) */
+  const T=[["Teacher","Sample quote: the focus on education and youth opportunities feels genuine and gives our area real hope."],
+    ["Local business owner","Sample quote: for the first time, our voices feel heard and respected through real action."],
+    ["Volunteer","Sample quote: honest, transparent and engaged with people, not just during elections but always."],
+    ["Farmer","Sample quote: practical help on water and fair prices is what our village has been asking for."]];
+  const initials=["A","B","C","D"];
+  const card=(t,i)=>`<div class="vc"><div class="q">“</div><p>${t[1]}</p><div class="who"><div class="av">${initials[i%4]}</div><div><b>Sample name</b><span>${t[0]}</span></div></div></div>`;
+  $('#vtrack').innerHTML=[...T,...T,...T,...T].map((t,i)=>card(t,i%4)).join("");
+
+  /* events: swap preview */
+  const evm=$('#evmedia');
+  $$('.ev').forEach(e=>e.addEventListener('mouseenter',()=>{
+    $$('.ev').forEach(x=>x.classList.toggle('on',x===e));
+    $('.art',evm)?.remove(); evm.insertAdjacentHTML("afterbegin",art(e.dataset.art,n++)); $('#evtag').textContent=e.dataset.l;
+  }));
+
+  /* modal */
+  const modal=$('#modal'),box=$('#mbox');
+  const close=()=>{modal.classList.remove('open');box.innerHTML="";document.body.style.overflow=""};
+  const open=h=>{box.innerHTML=h;modal.classList.add('open');document.body.style.overflow="hidden"};
+  $('#mx').onclick=close;modal.addEventListener('click',e=>{if(e.target===modal)close()});addEventListener('keydown',e=>e.key==="Escape"&&close());
+  function embed(url){
+    if(!url)return `<div class="empty"><div><div style="font-size:44px">🎬</div><h3 style="font-size:28px;margin:10px 0">Add your video here</h3><p style="opacity:.8">Set a link in <b>CONFIG.videos</b>: an .mp4 path, YouTube or Vimeo URL.</p></div></div>`;
+    let m=url.match(/(?:youtu\.be\/|v=|embed\/)([\w-]{11})/);if(m)return `<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0" allow="autoplay;encrypted-media;picture-in-picture" allowfullscreen></iframe>`;
+    m=url.match(/vimeo\.com\/(\d+)/);if(m)return `<iframe src="https://player.vimeo.com/video/${m[1]}?autoplay=1" allow="autoplay;fullscreen" allowfullscreen></iframe>`;
+    return `<video src="${url}" controls autoplay playsinline></video>`;
+  }
+  document.addEventListener('click',e=>{const v=e.target.closest('[data-video]');if(v)open(embed(CONFIG.videos[+v.dataset.video]))});
+
+  /* scroll */
+  const prog=$('#progress'),hd=$('#hd'),hb=$('#herobg'),hc=$('#herocard');
+  const onScroll=()=>{const h=document.documentElement;prog.style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%';hd.classList.toggle('s',scrollY>30);
+    if(!reduce&&scrollY<innerHeight){hb.style.transform=`translateY(${scrollY*.18}px) scale(${1+scrollY/2600})`;hc.style.borderRadius=Math.min(40+scrollY/12,70)+'px'}};
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+
+  const counted=new WeakSet();
+  const count=el=>{const to=+el.dataset.count,suf=el.dataset.suffix||'',t0=performance.now();
+    const tick=t=>{const p=Math.min((t-t0)/1600,1);el.textContent=Math.round(to*(1-Math.pow(1-p,4)))+suf;if(p<1)requestAnimationFrame(tick)};
+    reduce?el.textContent=to+suf:requestAnimationFrame(tick)};
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');
+    $$('[data-count]',e.target).forEach(c=>{if(!counted.has(c)){counted.add(c);count(c)}})}}),{threshold:.2});
+  $$('section.slide').forEach(s=>io.observe(s));
+
+  const links=$$('#menu a'),dots=$$('#dots a');
+  const spy=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const id='#'+e.target.id;
+    [...dots].forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id));
+    links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')===id))}}),{threshold:.5});
+  $$('section.slide').forEach(s=>spy.observe(s));
+
+  $('#burger').onclick=()=>$('#menu').classList.toggle('open');
+  links.forEach(a=>a.addEventListener('click',()=>$('#menu').classList.remove('open')));
+
+  if(!reduce&&matchMedia('(hover:hover)').matches){
+    $$('.tilt').forEach(c=>{
+      c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(900px) rotateY(${x*7}deg) rotateX(${-y*7}deg) translateY(-6px)`});
+      c.addEventListener('mouseleave',()=>c.style.transform='');
+    });
+    $$('.mag').forEach(b=>{
+      b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.16}px,${(e.clientY-r.top-r.height/2)*.26}px)`});
+      b.addEventListener('mouseleave',()=>b.style.transform='');
+    });
+    const st=$$('.stack .media');
+    $('#why').addEventListener('mousemove',e=>{const x=e.clientX/innerWidth-.5,y=e.clientY/innerHeight-.5;st.forEach((c,i)=>c.style.translate=`${x*-26*(i+1)}px ${y*-26*(i+1)}px`)});
+  }
+
+  $('#volForm').addEventListener('submit',e=>{e.target.innerHTML='<span style="padding:12px 20px;font-weight:600;color:var(--green)">✓ Thanks! Demo only: connect to your backend.</span>'});
+  $('#volBtn').addEventListener('click',e=>{e.preventDefault();$('#volForm input').focus()});
+})();
+</script>
+<script>
+/* =====================================================================
+   LANGUAGE (English / ಕನ್ನಡ). Edit the Kannada text below to refine copy.
+   Each key is a CSS selector; the array lists Kannada text in page order.
+   ===================================================================== */
+(()=>{
+  const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+
+  /* text-node mode: keeps icons, arrows and child elements intact */
+  const TXT={
+    'header .brand':['ರಾಷ್ಟ್ರವಾದಿ ಕಾಂಗ್ರೆಸ್ ಪಕ್ಷ'],
+    '#menu a':['ಮುಖಪುಟ','ನಮ್ಮ ಬಗ್ಗೆ','ಆದ್ಯತೆಗಳು','ಕಾರ್ಯಕ್ರಮಗಳು','ಜನರ ಮಾತು','ಸುದ್ದಿ'],
+    'header .nav > .btn':['ಚಳವಳಿಗೆ ಸೇರಿ'],
+
+    '.kw li':['ನಾಯಕತ್ವ','ನಂಬಿಕೆ','ಚಳವಳಿ','ಕ್ರಿಯೆ'],
+    '.herobox p':['ಸುರಕ್ಷಿತ ಸಮುದಾಯಗಳು, ಉತ್ತಮ ಉದ್ಯೋಗ, ಬಲಿಷ್ಠ ಶಿಕ್ಷಣ ಮತ್ತು ಪ್ರತಿ ಕುಟುಂಬಕ್ಕೂ ನಿಜವಾದ ಪ್ರಗತಿಗಾಗಿ ನಮ್ಮೊಂದಿಗೆ ಸೇರಿ.'],
+    '.herobox .btn-primary':['ಚಳವಳಿಗೆ ಸೇರಿ'],
+    '.herobox .btn-ghost':['ವೀಕ್ಷಿಸಿ'],
+    'h1 .mask:first-child > span':['ಬಲಿಷ್ಠ'],
+    'h1 .pill':['ಧ್ವನಿ.'],
+
+    '#about .chip':['ಪಕ್ಷದ ಬಗ್ಗೆ'],
+    '#about .lead':['ಇಲ್ಲಿ ಪಕ್ಷದ ಕಥೆಯನ್ನು ಬರೆಯಿರಿ: ಹುಟ್ಟು, ಮೌಲ್ಯಗಳು ಮತ್ತು ಪಕ್ಷ ಸೇವೆ ಸಲ್ಲಿಸುವ ಸಮುದಾಯಗಳು. ಎರಡು ಅಥವಾ ಮೂರು ಪ್ರಾಮಾಣಿಕ ವಾಕ್ಯಗಳು ಸಾಕು.'],
+    '#about .btn':['ನಮ್ಮ ಕಥೆ ಓದಿ'],
+    '#about .tag':['🤝 ಸಮುದಾಯ ಸಭೆ'],
+    '.badge span':['ಸಾರ್ವಜನಿಕ ಸೇವೆಯ ವರ್ಷಗಳು*'],
+
+    '#pillars .chip':['ಪ್ರಮುಖ ಆದ್ಯತೆಗಳು'],
+    '.pgrid .big .btn':['ಅಭಿಯಾನಕ್ಕೆ ಸೇರಿ'],
+    '.pc small':['ಗ್ರಾಮೀಣ ಬೆಳವಣಿಗೆ','ಭವಿಷ್ಯದ ಕೌಶಲ್ಯ','ಸಮಾನ ಧ್ವನಿ','ಉತ್ತಮ ಜೀವನ'],
+    '.pc h3':['ಕೃಷಿ','ಉದ್ಯೋಗ ಮತ್ತು ಯುವಜನ','ಮಹಿಳೆ ಮತ್ತು ಕುಟುಂಬ','ಅಭಿವೃದ್ಧಿ'],
+    '.pc p':['ನ್ಯಾಯಯುತ ಬೆಲೆ, ಉತ್ತಮ ನೀರಾವರಿ ಮತ್ತು ರೈತ ಕುಟುಂಬಗಳಿಗೆ ಬೆಂಬಲ.','ಕೌಶಲ್ಯ ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಮನೆಯ ಹತ್ತಿರವೇ ಸ್ಥಳೀಯ ಉದ್ಯಮ.','ಪ್ರತಿ ವಾರ್ಡ್‌ನಲ್ಲೂ ಸುರಕ್ಷತೆ, ಆರೋಗ್ಯ ಮತ್ತು ನಾಯಕತ್ವದ ಅವಕಾಶಗಳು.','ರಸ್ತೆ, ನೀರು, ಶಾಲೆ ಮತ್ತು ಆರೋಗ್ಯ ಕೇಂದ್ರಗಳು — ಸಾರ್ವಜನಿಕವಾಗಿ ಪರಿಶೀಲಿಸಲ್ಪಡುತ್ತವೆ.'],
+
+    '#why .chip':['ನಂಬಿಕಸ್ಥ ನಾಯಕತ್ವ'],
+    '#why .lead':['ಪ್ರಾಮಾಣಿಕತೆ, ಅನುಭವ ಮತ್ತು ಕ್ರಿಯೆಯ ಮೇಲೆ ಕಟ್ಟಲಾಗಿದೆ: ನಿಜವಾದ ಸಮಸ್ಯೆಗಳನ್ನು ಪರಿಹರಿಸುವುದು, ನಾಗರಿಕರ ಮಾತು ಕೇಳುವುದು ಮತ್ತು ಜನರು ನಂಬಬಹುದಾದ ಪ್ರಗತಿ ತರುವುದು.'],
+    '.nums h3':['ಸಾಬೀತಾದ ಅನುಭವ','ಪ್ರಾಮಾಣಿಕ ನಾಯಕತ್ವ','ಸಮುದಾಯ ಮೊದಲು','ನಿಜವಾದ ಫಲಿತಾಂಶ'],
+    '#why .s1 .tag':['🏗️ ಸ್ಥಳೀಯ ಕಾಮಗಾರಿಗಳು'],
+    '#why .s2 .tag':['🎓 ಯುವ ಅಭಿಯಾನ'],
+    '.band span':['ನಾಯಕ','ಬದಲಾವಣೆ','ನಂಬಿಕೆ','ಪ್ರಗತಿ','ಒಟ್ಟಾಗಿ','ಕ್ರಿಯೆ','ನಾಯಕ','ಬದಲಾವಣೆ','ನಂಬಿಕೆ','ಪ್ರಗತಿ','ಒಟ್ಟಾಗಿ','ಕ್ರಿಯೆ'],
+
+    '#events .chip':['ಮುಂಬರುವ ಕಾರ್ಯಕ್ರಮಗಳು'],
+    '.ev .d span':['ನವೆಂ','ನವೆಂ','ನವೆಂ','ನವೆಂ'],
+    '.ev h3':['ಸಮುದಾಯ ಸಂಪರ್ಕ ಕಾರ್ಯಕ್ರಮ','ಸಮುದಾಯ ಟೌನ್ ಹಾಲ್ ಸಭೆ','ರೈತರ ಸಮಾವೇಶ','ಬದಲಾವಣೆಗಾಗಿ ರ್‍ಯಾಲಿ'],
+    '.ev small':['ಸಮುದಾಯ ಭವನ · ಮಾದರಿ ಕಾರ್ಯಕ್ರಮ','ಪಟ್ಟಣ ಕೇಂದ್ರ · ಮಾದರಿ ಕಾರ್ಯಕ್ರಮ','ಜಿಲ್ಲಾ ಮೈದಾನ · ಮಾದರಿ ಕಾರ್ಯಕ್ರಮ','ಮುಖ್ಯ ಮೈದಾನ · ಮಾದರಿ ಕಾರ್ಯಕ್ರಮ'],
+
+    '.sup .chip':['ಚಳವಳಿಯನ್ನು ಬೆಂಬಲಿಸಿ'],
+    '.sup h2':['ಪ್ರತಿ ಕೊಡುಗೆಯೂ ಹೆಚ್ಚು ಜನರನ್ನು ತಲುಪಲು ಮತ್ತು ಬಲಿಷ್ಠ ಭವಿಷ್ಯ ಕಟ್ಟಲು ನಮಗೆ ನೆರವಾಗುತ್ತದೆ.'],
+    '.sup p':['ಮಾದರಿ ಪಠ್ಯ: ಈ ಬಟನ್ ಅನ್ನು ನಿಮ್ಮ ಅಧಿಕೃತ, ಕಾನೂನು ಪಾಲನೆಯ ಕೊಡುಗೆ ಪುಟಕ್ಕೆ ಜೋಡಿಸಿ.'],
+    '.sup .btn':['ಇಂದೇ ಕೊಡುಗೆ ನೀಡಿ'],
+
+    '#voices .chip':['ಬೆಂಬಲಿಗರು'],
+    '#voices .lead':['ನಾಗರಿಕರು, ಸ್ವಯಂಸೇವಕರು ಮತ್ತು ಸ್ಥಳೀಯ ನಾಯಕರ ಮಾತು ಕೇಳಿ.'],
+    '.samp':['ವಿನ್ಯಾಸ ಪರಿಶೀಲನೆಗಾಗಿ ಮಾತ್ರ ಮಾದರಿ ಹೇಳಿಕೆಗಳು. ನಿಜವಾದ, ಒಪ್ಪಿಗೆ ಪಡೆದ ಹೇಳಿಕೆಗಳಿಂದ ಬದಲಿಸಿ.'],
+
+    '#volunteer .chip':['ಸ್ವಯಂಸೇವಕರಾಗಿ'],
+    '.steps h4':['ನಿಜವಾದ ಪರಿಣಾಮ ಬೀರಿ','ಅಭಿಯಾನದ ಕಾರ್ಯಕ್ರಮಗಳಲ್ಲಿ ಭಾಗವಹಿಸಿ','ಅನುಭವ ಗಳಿಸಿ'],
+    '#volBtn':['ಸ್ವಯಂಸೇವಕರಾಗಿ ಸೇರಿ'],
+    '#volForm button':['ತಿಳಿಸಿ'],
+    '#volunteer .vmedia .media:nth-child(1) .tag':['ಸ್ವಯಂಸೇವಕರು'],
+    '#volunteer .vmedia .media:nth-child(2) .tag':['ಕ್ಷೇತ್ರ ತಂಡ'],
+
+    '#insights .chip':['ಇತ್ತೀಚಿನ ಒಳನೋಟಗಳು'],
+    '#insights .lead':['ಘೋಷಣೆಗಳು, ನೀತಿ ಮಾಹಿತಿ, ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ಸಮುದಾಯ ಕಥೆಗಳು. ಕೆಳಗಿನವು ಮಾದರಿ ಶೀರ್ಷಿಕೆಗಳು.'],
+    '.post small':['ಮಾದರಿ ದಿನಾಂಕ · 4 ನಿಮಿಷ ಓದು','ಮಾದರಿ ದಿನಾಂಕ · 5 ನಿಮಿಷ ಓದು','ಮಾದರಿ ದಿನಾಂಕ · 3 ನಿಮಿಷ ಓದು','ಮಾದರಿ ದಿನಾಂಕ · 4 ನಿಮಿಷ ಓದು'],
+    '.post h3':['ರ್‍ಯಾಲಿಗೆ ಅಪಾರ ಸಂಖ್ಯೆಯ ಬೆಂಬಲಿಗರು','ಉದ್ಯೋಗ ಮತ್ತು ಬೆಳವಣಿಗೆಗೆ ಒತ್ತು ನೀಡುವ ಹೊಸ ನೀತಿ ಯೋಜನೆ','ಟೌನ್ ಹಾಲ್ ಸಭೆಗಳು ಸಮುದಾಯದ ನಂಟನ್ನು ಬಲಪಡಿಸುತ್ತವೆ','ಬೆಳೆಯುತ್ತಿರುವ ಚಳವಳಿಗೆ ಯುವಜನರ ಸೇರ್ಪಡೆ'],
+
+    'footer .btn':['ಸ್ವಯಂಸೇವಕರಾಗಿ'],
+    'footer h4':['ಸುದ್ದಿಪತ್ರ','ತ್ವರಿತ ಲಿಂಕ್‌ಗಳು','ಸಾಮಾಜಿಕ ಜಾಲ','ಸಂಪರ್ಕ'],
+    'footer .frow p':['ನಿಮ್ಮ ಇನ್‌ಬಾಕ್ಸ್‌ನಲ್ಲಿ ಅಪ್‌ಡೇಟ್ ಪಡೆಯಿರಿ.'],
+    'footer .news button':['ಚಂದಾದಾರರಾಗಿ'],
+    'footer .frow > div:nth-child(2) a':['ನಮ್ಮ ಬಗ್ಗೆ','ಆದ್ಯತೆಗಳು','ಕಾರ್ಯಕ್ರಮಗಳು','ಸುದ್ದಿ'],
+    'footer .frow > div:nth-child(4) a':[null,null,'ಕಚೇರಿ ವಿಳಾಸ ಇಲ್ಲಿ'],
+    '.legal':['© 2026 · ವಿನ್ಯಾಸ ಮಾದರಿ · ಯಾವುದೇ ರಾಜಕೀಯ ಪಕ್ಷದ ಅಧಿಕೃತ ವೆಬ್‌ಸೈಟ್ ಅಲ್ಲ. ಅಗತ್ಯವಿರುವಂತೆ ಅಧಿಕೃತ ಹಕ್ಕುನಿರಾಕರಣೆ, ನಿಧಿ ಮತ್ತು ಕಾನೂನು ಸೂಚನೆಗಳನ್ನು ಸೇರಿಸಿ.']
+  };
+
+  /* innerHTML mode: headings that contain a highlighted span */
+  const HTML={
+    '#about .statement':["ಸಾರ್ವಜನಿಕ ಸೇವೆಯ ಬಲವಾದ ಪರಂಪರೆ ಮತ್ತು <em>ಜನರೇ ಮೊದಲು</em> ಎಂಬ ರಾಜಕಾರಣದ ಉತ್ಸಾಹದೊಂದಿಗೆ, ನಾವು <em>ಸಕಾರಾತ್ಮಕ ಬದಲಾವಣೆ</em>, ಆರ್ಥಿಕ ಬೆಳವಣಿಗೆ ಮತ್ತು ಪಾರದರ್ಶಕ ಆಡಳಿತಕ್ಕೆ ಬದ್ಧರಾಗಿದ್ದೇವೆ."],
+    '#pillars h2':["ಸ್ಪಷ್ಟ ಆದ್ಯತೆಗಳು ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ನೀತಿಗಳು — <span class='grad'>ಬಲಿಷ್ಠ, ಸುರಕ್ಷಿತ</span> ಭವಿಷ್ಯಕ್ಕಾಗಿ"],
+    '#why h2':["ಜನರು <span class='grad'>ನಮ್ಮೊಂದಿಗೆ ಏಕೆ ನಿಲ್ಲುತ್ತಾರೆ</span>"],
+    '#events h2':["ನಮ್ಮನ್ನು ಭೇಟಿಯಾಗಿ, ನಿಮ್ಮ ಧ್ವನಿ ಹಂಚಿಕೊಳ್ಳಿ ಮತ್ತು <span class='grad'>ಮುಂದಿನ ಹಾದಿ ರೂಪಿಸಿ</span>"],
+    '#voices h2':["<span class='grad'>ಸಮುದಾಯದ</span> ಧ್ವನಿಗಳು"],
+    '#volunteer h2':["<span class='grad'>ಸಮುದಾಯದ ಕ್ರಿಯೆಯ</span> ಮೂಲಕ ಬಲಿಷ್ಠ ಭವಿಷ್ಯ ಕಟ್ಟಲು ಕೈಜೋಡಿಸಿ"],
+    '#insights h2':["ಇತ್ತೀಚಿನ <span class='grad'>ಅಪ್‌ಡೇಟ್‌ಗಳು</span>"],
+    '.fbig':["ಬದಲಾವಣೆಗಾಗಿ<br><span>ಚಳವಳಿಗೆ</span> ಸೇರಿ."]
+  };
+
+  const PH={'#volForm input':'ನಿಮ್ಮ ಮೊಬೈಲ್ ಅಥವಾ ಇಮೇಲ್','footer .news input':'ಇಮೇಲ್ ವಿಳಾಸ'};
+  const DOTS=['ಮುಖಪುಟ','ನಮ್ಮ ಬಗ್ಗೆ','ಆದ್ಯತೆಗಳು','ನಮ್ಮನ್ನೇಕೆ','ಕಾರ್ಯಕ್ರಮ','ಬೆಂಬಲ','ಜನರ ಮಾತು','ಸ್ವಯಂಸೇವಕ','ಸುದ್ದಿ'];
+  const EVL=['ಸಮುದಾಯ ಸಂಪರ್ಕ','ಟೌನ್ ಹಾಲ್','ರೈತರ ಸಮಾವೇಶ','ರ್‍ಯಾಲಿ'];
+  const VOICES=[
+    ['ಶಿಕ್ಷಕರು','ಮಾದರಿ ಹೇಳಿಕೆ: ಶಿಕ್ಷಣ ಮತ್ತು ಯುವಜನರ ಅವಕಾಶಗಳ ಮೇಲಿನ ಗಮನ ನಿಜವೆನಿಸುತ್ತದೆ ಮತ್ತು ನಮ್ಮ ಪ್ರದೇಶಕ್ಕೆ ಭರವಸೆ ನೀಡುತ್ತದೆ.','ಅ'],
+    ['ಸ್ಥಳೀಯ ಉದ್ಯಮಿ','ಮಾದರಿ ಹೇಳಿಕೆ: ಮೊದಲ ಬಾರಿಗೆ ನಮ್ಮ ಮಾತಿಗೆ ನಿಜವಾದ ಕ್ರಿಯೆಯ ಮೂಲಕ ಗೌರವ ಸಿಗುತ್ತಿದೆ ಎನಿಸುತ್ತದೆ.','ಬ'],
+    ['ಸ್ವಯಂಸೇವಕ','ಮಾದರಿ ಹೇಳಿಕೆ: ಪ್ರಾಮಾಣಿಕ, ಪಾರದರ್ಶಕ ಮತ್ತು ಜನರೊಂದಿಗೆ ಬೆರೆಯುವವರು — ಚುನಾವಣೆಯ ಸಮಯದಲ್ಲಿ ಮಾತ್ರವಲ್ಲ, ಯಾವಾಗಲೂ.','ಸ'],
+    ['ರೈತ','ಮಾದರಿ ಹೇಳಿಕೆ: ನೀರು ಮತ್ತು ನ್ಯಾಯಯುತ ಬೆಲೆಯ ಪ್ರಾಯೋಗಿಕ ನೆರವು ನಮ್ಮ ಹಳ್ಳಿ ಕೇಳುತ್ತಿದ್ದದ್ದೇ.','ದ']
+  ];
+
+  const nodeOf=el=>[...el.childNodes].find(n=>n.nodeType===3&&n.nodeValue.trim());
+  const SEL_EVL=()=>$$('.ev');
+
+  function apply(lang){
+    const kn=lang==='kn';
+    document.documentElement.lang=kn?'kn':'en';
+
+    for(const [sel,arr] of Object.entries(TXT)){
+      $$(sel).forEach((el,i)=>{
+        if(arr[i]==null)return;
+        const n=nodeOf(el); if(!n)return;
+        if(n._o===undefined)n._o=n.nodeValue;
+        n.nodeValue=kn?((/^\s/.test(n._o)?' ':'')+arr[i]+(/\s$/.test(n._o)?' ':'')):n._o;
+      });
+    }
+    for(const [sel,arr] of Object.entries(HTML)){
+      $$(sel).forEach((el,i)=>{
+        if(arr[i]==null)return;
+        if(el._o===undefined)el._o=el.innerHTML;
+        el.innerHTML=kn?arr[i]:el._o;
+      });
+    }
+    for(const [sel,txt] of Object.entries(PH)){
+      $$(sel).forEach(el=>{if(el._p===undefined)el._p=el.placeholder;el.placeholder=kn?txt:el._p});
+    }
+    $$('#dots a').forEach((a,i)=>{if(a._o===undefined)a._o=a.dataset.l;a.dataset.l=kn?DOTS[i]:a._o});
+    SEL_EVL().forEach((e,i)=>{if(e._l===undefined)e._l=e.dataset.l;e.dataset.l=kn?EVL[i]:e._l});
+    const on=$('.ev.on'),tg=$('#evtag'); if(on&&tg)tg.textContent=on.dataset.l;
+
+    const vt=$('#vtrack');
+    if(vt){
+      if(vt._o===undefined)vt._o=vt.innerHTML;
+      vt.innerHTML=kn?[...VOICES,...VOICES,...VOICES,...VOICES].map(v=>`<div class="vc"><div class="q">“</div><p>${v[1]}</p><div class="who"><div class="av">${v[2]}</div><div><b>ಮಾದರಿ ಹೆಸರು</b><span>${v[0]}</span></div></div></div>`).join(''):vt._o;
+    }
+    document.title=kn?'ರಾಷ್ಟ್ರವಾದಿ ಕಾಂಗ್ರೆಸ್ ಪಕ್ಷ — ಲ್ಯಾಂಡಿಂಗ್ ಪುಟ (ಮಾದರಿ)':'Nationalist Congress Party — Landing Page (Concept)';
+    $$('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===lang));
+  }
+
+  const get=()=>{try{return localStorage.getItem('ncp-lang')}catch(e){return null}};
+  const set=v=>{try{localStorage.setItem('ncp-lang',v)}catch(e){}};
+  const qs=new URLSearchParams(location.search).get('lang');
+  let lang=qs||get()||((navigator.language||'').toLowerCase().startsWith('kn')?'kn':'en');
+  if(lang!=='kn')lang='en';
+  if(lang==='kn')apply('kn'); else $$('#lang button').forEach(b=>b.classList.toggle('on',b.dataset.l==='en'));
+
+  $('#lang').addEventListener('click',e=>{
+    const b=e.target.closest('button'); if(!b||b.dataset.l===lang)return;
+    lang=b.dataset.l; set(lang);
+    document.body.classList.remove('swap'); void document.body.offsetWidth; document.body.classList.add('swap');
+    apply(lang);
+  });
+})();
+</script>
+</body>
+</html>
